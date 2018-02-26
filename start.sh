@@ -8,7 +8,7 @@ echo `stage2_eltorito iso/boot/grub/`      # copy the bootloader
 echo `cp kernel.elf iso/boot/`             # copy the kernel
 echo `touch iso/boot/grub/menu.lst`
 echo `echo "default=0
-            timeout=0
+timeout=0
 
-            title os
-            kernel /boot/kernel.elf" > iso/boot/grub/menu.lst`
+title os
+kernel /boot/kernel.elf" > iso/boot/grub/menu.lst`
