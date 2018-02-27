@@ -16,6 +16,6 @@ echo `genisoimage -R                              \
                   -quiet                          \
                   -boot-info-table                \
                   -o os.iso                       \
-                  iso
+                  iso`
 
 
