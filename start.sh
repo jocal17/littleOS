@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo `nasm -f elf64 loader.s`
+echo `nasm -f elf32 loader.s`
 echo `ld -T link.ld -melf_i386 loader.o -o kernel.elf`
 echo `cp kernel.elf iso/boot/`             # copy the kernel
 
