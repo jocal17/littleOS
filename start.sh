@@ -5,7 +5,7 @@ echo `ld -T link.ld -melf_i386 loader.o -o kernel.elf`
 echo `cp kernel.elf iso/boot/`             # copy the kernel
 
 
-echo `mv stage2_eltorito iso/boot/grub/`   # copy the bootloader
+echo `find . -name "stage2_eltorito " -exec cp "{}" /littleOS/iso/boot/grub \;`
 
 echo `genisoimage -R                              \
                   -b boot/grub/stage2_eltorito    \
