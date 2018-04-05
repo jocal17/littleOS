@@ -1,6 +1,5 @@
         global loader
         extern main
-        extern sum_of_three
 
         MAGIC_NUMBER equ 0x1BADB002
         FLAGS        equ 0x0
