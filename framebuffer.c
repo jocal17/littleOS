@@ -3,10 +3,10 @@
 
 static int position = 0;
 
-void fb_write_cell(unsigned int i, char c, unsigned char fg, unsigned char bg) {
-    unsigned char *fb = (unsigned char *) FRAMEBUFFER;
-    fb[i] = c;
-    fb[i+1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
+void fb_write_cell(unsigned int i, char c, unsigned char bg, unsigned char fg) {
+    volatile char *fb = (volatile char *) FRAMEBUFFER;
+    fb[i*2] = c;
+    fb[i*2+1] = ((bg & 0x0F) << 4) | (fg & 0x0F);
 }
 
 
@@ -21,7 +21,7 @@ int write(char *buf, unsigned int len) {
     char c;
     for (unsigned int i = 0; i < len; i++) {
         c = buf[i];
-        fb_write_cell(i, c, WHITE, BLACK);
+        fb_write_cell(i, c, BLACK, WHITE);
         position +=1;
         fb_move_cursor(position);
     }
