@@ -17,7 +17,7 @@ void fb_move_cursor(unsigned short pos) {
     outb(FB_DATA_PORT,    pos & 0x00FF);
 }
 
-int write(char *buf, unsigned int len) {
+int fb_write(char *buf, unsigned int len) {
     char c;
     for (unsigned int i = 0; i < len; i++) {
         c = buf[i];
