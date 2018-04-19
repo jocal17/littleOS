@@ -11,14 +11,14 @@
     * order, but they start at different values.
     */
 
-#define COM1                0x3F8      /* COM1 base port */
+#define COM1 0x3F8 /* COM1 base port */
 
-#define DATA(base)          (base)
-#define INTERRUPT(base)     (base + 1)
-#define FIFO_COMMAND(base)  (base + 2)
-#define LINE_COMMAND(base)  (base + 3)
-#define MODEM_COMMAND(base) (base + 4)
-#define LINE_STATUS(base)   (base + 5)
+#define S_DATA(base) (base)
+#define S_INTERRUPT(base) (base + 1)
+#define S_FIFO_COMMAND(base) (base + 2)
+#define S_LINE_COMMAND(base) (base + 3)
+#define S_MODEM_COMMAND(base) (base + 4)
+#define S_LINE_STATUS(base) (base + 5)
 
 /* The I/O port commands */
 
@@ -26,7 +26,7 @@
     * Tells the serial port to expect first the highest 8 bits on the data port,
     * then the lowest 8 bits will follow
     */
-#define LINE_ENABLE_DLAB         0x80
+#define LINE_ENABLE_DLAB 0x80
 
 /** serial_configure_baud_rate:
     *  Sets the speed of the data being sent. The default speed of a serial
@@ -45,7 +45,7 @@
  *  @param com  The serial port to configure
  */
 
-    /* Bit:     | 7 | 6 | 5 4 3 | 2 | 1 0 |
+/* Bit:     | 7 | 6 | 5 4 3 | 2 | 1 0 |
      * Content: | d | b | prty  | s | dl  |
      * Value:   | 0 | 0 | 0 0 0 | 0 | 1 1 | = 0x03
      */
@@ -55,6 +55,5 @@ int serial_is_transmit_fifo_empty(unsigned int com);
 void serial_init(int com);
 
 void serial_write(unsigned short com, unsigned char data);
-
 
 #endif
