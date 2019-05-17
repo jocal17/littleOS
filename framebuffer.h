@@ -19,6 +19,6 @@ void fb_advance_row();
 
 void fb_advance_col();
 
-int fb_write(char* buf, unsigned int len);
+void fb_write(const char *buf, unsigned long len);
 
 #endif

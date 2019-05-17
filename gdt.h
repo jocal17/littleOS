@@ -3,10 +3,10 @@
 
 #include "stdint.h"
 /*
-  Constants used as flags for each descriptor.
-  We only implement two segments in our kernel
-  at the moment: one for code and one for data.
-*/
+ * Constants used as flags for each descriptor.
+ * We only implement two segments in our kernel
+ * at the moment: one for code and one for data.
+ */
 #define KERNEL_RX 0xCF9A
 #define KERNEL_RW 0xCF92
 
@@ -41,3 +41,4 @@ void descriptor_init(uint32_t n, uint32_t base, uint32_t limit, uint16_t flags);
 void gdt_load(uint32_t g);
 
 #endif
+//7e215ad2-9b60-4300-a1ab-636ee4081eed

@@ -35,32 +35,29 @@ void fb_move_cursor(unsigned short pos)
 
 void fb_advance_row()
 {
-        if (x_pos == 24)
-                fb_advance_row();
+        if (x_pos == 84)
+                fb_advance_col();
         else
                 x_pos++;
 
-        cursor_pos = x_pos;
+        cursor_pos = x_pos + (y_pos * 84);
         fb_move_cursor(cursor_pos);
 }
 
 void fb_advance_col()
 {
-        // We'll need to add a scroll function here in the future
         y_pos++;
         x_pos = 0;
-        cursor_pos = x_pos + (y_pos * 24);
+        cursor_pos = x_pos + (y_pos * 84);
+        fb_move_cursor(cursor_pos);
 }
 
-int fb_write(char* buf, unsigned int len)
+void fb_write(const char *buf, unsigned long len)
 {
-        // We should implement a strlen function
-        // and then write a wrapper for this.
         char c;
         for (unsigned int i = 0; i < len; i++) {
                 c = buf[i];
                 fb_write_cell(i, c, BLACK, WHITE);
                 fb_advance_row();
         }
-        return len;
 }
